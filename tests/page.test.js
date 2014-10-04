@@ -6,6 +6,8 @@ var url = require('url');
 var baseURL = 'http://localhost:4000/api/';
 
 describe('page', function () {
+  var id = null;
+
   it('should be create page', function (done) {
     var body = {
       title: ch.Name.title(),
@@ -18,6 +20,7 @@ describe('page', function () {
       should.not.exist(res.body.err);
       res.body.status.should.be.ok;
       res.body.result._id.should.have.lengthOf(24);
+      id = res.body.result._id;
       done();
     }
 
@@ -25,5 +28,18 @@ describe('page', function () {
       .post(url.resolve(baseURL, 'page'))
       .send(body)
       .end(endHandler);
+  });
+
+  it('shoule be read page', function (done) {
+    function endHandler(err, res) {
+      should.not.exist(err); 
+      should.not.exist(res.body.err);
+      res.body.status.should.be.ok;
+      res.body.result._id.should.have.lengthOf(24);
+      done();
+    } 
+    superagent
+      .get(url.resolve(baseURL, 'page/' + id))
+      .end(endHandler);   
   });
 });
