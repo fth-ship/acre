@@ -4,8 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
 // globals
+var mongoose = global.mongoose = require('mongoose');
 var debug = global.debug = require('debug')('acre');
 var util = global.util = require('util');
 var models = global.models = require('./models');
@@ -13,11 +13,9 @@ var middlewares = global.middlewares = require('./middlewares');
 var controllers = global.controllers = require('./controllers');
 // routes
 var page = require('./routes/page');
-
-debug(util.inspect(middlewares));
-
+// app instance
 var app = express();
-
+// database connection
 mongoose
     .connect('localhost', 'acre');
 

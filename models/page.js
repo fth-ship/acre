@@ -9,6 +9,7 @@ function pageHandler() {
     title: { type: String, required: true },
     body: { type: String },
     tag: [{ type: String }], 
+    hidden: { type: Boolean, default: false },
   });
   schema.plugin(timestamp);
 

@@ -29,6 +29,6 @@ function readPageHandler(req, res, next) {
     }
   }
   Page
-    .findOne({ _id: id }, pageFindOneHandler);
+    .findOne({ _id: id, hidden: false }, pageFindOneHandler);
 }
 module.exports = exports = readPageHandler;
