@@ -14,5 +14,10 @@
     "mongoose": "^3.8.17",
     "morgan": "~1.3.0",
     "serve-favicon": "~2.1.3"
+  },
+  "devDependencies": {
+    "charlatan": "^0.1.9",
+    "should": "^4.0.4",
+    "superagent": "^0.20.0"
   }
 }
